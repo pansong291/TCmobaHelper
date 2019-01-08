@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:orientation="horizontal"
+	android:gravity="center_vertical">
+
+	<com.a4455jkjh.colorpicker.view.TestView
+		android:layout_height="32dp"
+		android:layout_width="36dp"
+		android:id="@+id/view_color"
+		android:layout_margin="12dp"/>
+
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:orientation="vertical"
+		android:layout_weight="1">
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="左距：1200"
+			android:textColor="#FF000000"
+			android:id="@+id/txt_left"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="实长：1200"
+			android:id="@+id/txt_solid"
+			android:textColor="#FF000000"/>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:orientation="vertical"
+		android:layout_weight="1">
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="顶距：1200"
+			android:textColor="#FF000000"
+			android:id="@+id/txt_top"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="隙长：1200"
+			android:textColor="#FF000000"
+			android:id="@+id/txt_space"/>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:orientation="vertical"
+		android:layout_weight="1">
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="底距：1200"
+			android:textColor="#FF000000"
+			android:id="@+id/txt_bottom"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="厚度：1200"
+			android:textColor="#FF000000"
+			android:id="@+id/txt_stroke"/>
+
+	</LinearLayout>
+
+</LinearLayout>
+

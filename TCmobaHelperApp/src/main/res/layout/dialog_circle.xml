@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:paddingLeft="16dp"
+	android:paddingRight="16dp"
+	android:paddingTop="16dp"
+	android:paddingBottom="16dp">
+
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:id="@+id/linearlayout_color"
+		android:focusable="true"
+		android:clickable="true"
+		android:orientation="horizontal"
+		android:gravity="center_vertical"
+		android:background="@drawable/button">
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="颜色"
+			android:textColor="#FF000000"
+			android:textSize="18sp"
+			android:layout_weight="1"/>
+
+		<com.a4455jkjh.colorpicker.view.TestView
+			android:layout_height="32dp"
+			android:layout_width="36dp"
+			android:id="@+id/view_color"
+			android:layout_margin="12dp"/>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:orientation="horizontal"
+		android:gravity="center_vertical">
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="左部距离"
+			android:textColor="#FF000000"
+			android:textSize="18sp"/>
+
+		<EditText
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:id="@+id/edt_left"
+			android:inputType="numberSigned"/>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:orientation="horizontal"
+		android:gravity="center_vertical">
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="顶部距离"
+			android:textColor="#FF000000"
+			android:textSize="18sp"/>
+
+		<EditText
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:id="@+id/edt_top"
+			android:inputType="numberSigned"/>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:orientation="horizontal"
+		android:gravity="center_vertical">
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="底部距离"
+			android:textColor="#FF000000"
+			android:textSize="18sp"/>
+
+		<EditText
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:id="@+id/edt_bottom"
+			android:inputType="numberSigned"/>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:orientation="horizontal"
+		android:gravity="center_vertical">
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="实线长度"
+			android:textColor="#FF000000"
+			android:textSize="18sp"/>
+
+		<EditText
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:id="@+id/edt_solid"
+			android:inputType="number"/>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:orientation="horizontal"
+		android:gravity="center_vertical">
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="间隙长度"
+			android:textColor="#FF000000"
+			android:textSize="18sp"/>
+
+		<EditText
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:id="@+id/edt_space"
+			android:inputType="number"/>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:orientation="horizontal"
+		android:gravity="center_vertical">
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="曲线厚度"
+			android:textColor="#FF000000"
+			android:textSize="18sp"/>
+
+		<EditText
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:id="@+id/edt_stroke"
+			android:inputType="number"/>
+
+	</LinearLayout>
+
+</LinearLayout>
+

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="match_parent"
+	android:layout_width="match_parent">
+
+	<ImageView
+		android:layout_height="match_parent"
+		android:layout_width="match_parent"
+		android:id="@+id/imageview_test"
+		android:scaleType="fitCenter"/>
+
+	<pansong291.DashCircleView
+		android:id="@+id/dashcircleview"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"/>
+
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:background="#C8FFFFFF"
+		android:layout_alignParentLeft="true">
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceSmall"
+			android:layout_width="match_parent"
+			android:textColor="#000000"
+			android:id="@+id/txt_value"
+			android:focusable="true"
+			android:clickable="true"
+			android:gravity="center"
+			android:background="@drawable/button"/>
+
+		<ScrollView
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent">
+
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:id="@+id/linearlayout_test"
+				android:orientation="vertical">
+
+				<TextView
+					android:textAppearance="?android:attr/textAppearanceSmall"
+					android:layout_height="32dp"
+					android:layout_width="match_parent"
+					android:text="图片..."
+					android:textColor="#000000"
+					android:id="@+id/txt_selpic"
+					android:focusable="true"
+					android:clickable="true"
+					android:background="@drawable/button"
+					android:gravity="center"/>
+
+				<Switch
+					android:layout_height="32dp"
+					android:layout_width="match_parent"
+					android:id="@+id/switch_flopos"
+					android:text="左侧"
+					android:gravity="center"/>
+
+				<Switch
+					android:layout_height="32dp"
+					android:layout_width="match_parent"
+					android:id="@+id/switch_bgc"
+					android:text="亮背景"
+					android:checked="true"
+					android:gravity="center"/>
+
+				<Switch
+					android:layout_height="32dp"
+					android:layout_width="match_parent"
+					android:id="@+id/switch_oval"
+					android:text="矩形"
+					android:gravity="center"/>
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="horizontal"
+					android:gravity="center">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:layout_width="wrap_content"
+						android:text="颜色："
+						android:textColor="#FF000000"
+						android:id="@+id/txt_0"/>
+
+					<com.a4455jkjh.colorpicker.view.TestView
+						android:layout_height="32dp"
+						android:layout_width="50dp"
+						android:focusable="true"
+						android:clickable="true"
+						android:id="@+id/test_color"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="horizontal"
+					android:gravity="center">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:layout_width="wrap_content"
+						android:text="实长："
+						android:textColor="#FF000000"
+						android:id="@+id/txt_1"/>
+
+					<EditText
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:imeOptions="actionDone"
+						android:id="@+id/edt_solid"
+						android:textColor="#000000"
+						android:singleLine="true"
+						android:inputType="number"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="horizontal"
+					android:gravity="center">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:layout_width="wrap_content"
+						android:text="隙长："
+						android:textColor="#FF000000"
+						android:id="@+id/txt_2"/>
+
+					<EditText
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:imeOptions="actionDone"
+						android:id="@+id/edt_space"
+						android:textColor="#000000"
+						android:singleLine="true"
+						android:inputType="number"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="horizontal"
+					android:gravity="center">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:layout_width="wrap_content"
+						android:text="厚度："
+						android:textColor="#FF000000"
+						android:id="@+id/txt_3"/>
+
+					<EditText
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:imeOptions="actionDone"
+						android:id="@+id/edt_stroke"
+						android:textColor="#000000"
+						android:singleLine="true"
+						android:inputType="number"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="horizontal"
+					android:gravity="center">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:layout_width="wrap_content"
+						android:text="位置："
+						android:textColor="#FF000000"
+						android:id="@+id/txt_4"/>
+
+					<Spinner
+						android:layout_height="32dp"
+						android:layout_width="match_parent"
+						android:id="@+id/spinner_tblr"
+						android:background="#90FFFFFF"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="horizontal"
+					android:gravity="center">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:layout_width="wrap_content"
+						android:text="距离："
+						android:textColor="#FF000000"
+						android:id="@+id/txt_5"/>
+
+					<EditText
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:imeOptions="actionDone"
+						android:id="@+id/edt_value"
+						android:textColor="#000000"
+						android:singleLine="true"
+						android:inputType="numberSigned"/>
+
+				</LinearLayout>
+
+			</LinearLayout>
+
+		</ScrollView>
+
+	</LinearLayout>
+
+</RelativeLayout>
+

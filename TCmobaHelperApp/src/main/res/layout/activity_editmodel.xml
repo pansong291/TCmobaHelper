@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical">
+
+	<ListView
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:id="@+id/list_circle"
+		android:layout_weight="1"/>
+
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:orientation="horizontal"
+		android:gravity="right">
+
+		<Button
+			style="?android:attr/buttonBarButtonStyle"
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="重命名"
+			android:onClick="onRenameClick"
+			android:textColor="#FF009E98"
+			android:background="@drawable/button"/>
+
+		<Button
+			style="?android:attr/buttonBarButtonStyle"
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="新增曲线"
+			android:onClick="onNewCircleClick"
+			android:textColor="#FF6700A5"
+			android:background="@drawable/button"/>
+
+		<Button
+			style="?android:attr/buttonBarButtonStyle"
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="保存方案"
+			android:onClick="onSaveHeroClick"
+			android:textColor="#FF1FA400"
+			android:background="@drawable/button"/>
+
+		<Button
+			style="?android:attr/buttonBarButtonStyle"
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="放弃"
+			android:onClick="onCancelClick"
+			android:textColor="#FFC00000"
+			android:background="@drawable/button"/>
+
+	</LinearLayout>
+
+</LinearLayout>
+

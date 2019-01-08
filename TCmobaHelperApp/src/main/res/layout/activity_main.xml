@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:gravity="center"
+	android:orientation="vertical"
+	android:padding="16dp">
+
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:orientation="horizontal"
+		android:gravity="center_vertical">
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceSmall"
+			android:layout_width="wrap_content"
+			android:text="选择一个方案："
+			android:textColor="#FF000000"/>
+
+		<Spinner
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:id="@+id/spinner_hero"
+			android:layout_weight="1"/>
+
+		<Button
+			style="?android:attr/buttonBarButtonStyle"
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="新增方案"
+			android:background="@drawable/button"
+			android:textColor="#FFA000C5"
+			android:onClick="onNewHeroClick"/>
+
+	</LinearLayout>
+
+	<Button
+		style="?android:attr/buttonBarButtonStyle"
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:text="修改  该方案"
+		android:onClick="onUpdateClick"
+		android:background="@drawable/button"
+		android:textColor="#FF0032F8"/>
+
+	<Button
+		style="?android:attr/buttonBarButtonStyle"
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:text="删除  该方案"
+		android:onClick="onDeleteClick"
+		android:background="@drawable/button"
+		android:textColor="#FFC20000"/>
+
+	<Button
+		style="?android:attr/buttonBarButtonStyle"
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:text="启动/更新  该方案"
+		android:onClick="onStartClick"
+		android:background="@drawable/button"
+		android:textColor="#FF2EAE00"/>
+
+	<Button
+		style="?android:attr/buttonBarButtonStyle"
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:text="关闭"
+		android:onClick="onCloseClick"
+		android:background="@drawable/button"
+		android:textColor="#FF000000"/>
+
+	<Button
+		style="?android:attr/buttonBarButtonStyle"
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:text="测试"
+		android:onClick="onTestClick"
+		android:background="@drawable/button"
+		android:textColor="#FFDB6600"/>
+
+</LinearLayout>
+
