@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import android.content.SharedPreferences;
+import tencent.tmgp.sgame.activity.Zactivity;
 
 public class JsonUtils
 {
@@ -16,6 +18,32 @@ public class JsonUtils
  
  private JsonUtils()
  {}
+ 
+ public static String sp2Json(SharedPreferences sp)
+ {
+  return new JSONObject(sp.getAll()).toString();
+ }
+ 
+ public static boolean json2SP(String json, SharedPreferences sp)
+ {
+  boolean success = false;
+  try
+  {
+   JSONObject jo = new JSONObject(json);
+   sp.edit().putString(Zactivity.MAIN_MODELS, jo.optString(Zactivity.MAIN_MODELS, null))
+   .putInt(Zactivity.MAIN_HERO_SEL_INDEX, jo.optInt(Zactivity.MAIN_HERO_SEL_INDEX, -1))
+   .putString(Zactivity.TEST_CIRCLE, jo.optString(Zactivity.TEST_CIRCLE, null))
+   .putBoolean(Zactivity.TEST_BGC, jo.optBoolean(Zactivity.TEST_BGC, true))
+   .putBoolean(Zactivity.TEST_OVAL, jo.optBoolean(Zactivity.TEST_OVAL, false))
+   .putBoolean(Zactivity.TEST_FLOPOS, jo.optBoolean(Zactivity.TEST_FLOPOS, false))
+   .commit();
+   success = true;
+  }catch(Exception e)
+  {
+   e.printStackTrace();
+  }
+  return success;
+ }
  
  public static DashCircle parseJsonObject(String json)
  {

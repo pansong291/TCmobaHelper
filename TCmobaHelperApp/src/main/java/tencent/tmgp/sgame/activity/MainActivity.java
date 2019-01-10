@@ -19,6 +19,7 @@ import tencent.tmgp.sgame.other.DashCircle;
 import tencent.tmgp.sgame.other.JsonUtils;
 import tencent.tmgp.sgame.other.ViewUtils;
 import tencent.tmgp.sgame.service.MainService;
+import tencent.tmgp.sgame.other.FileUtils;
 
 public class MainActivity extends Zactivity 
 {
@@ -27,7 +28,7 @@ public class MainActivity extends Zactivity
  public static SpinnerArrayAdapter spinnerArrayAdapter;
  public static BaseModel selectedModel = null;
  public static int selectedIndex = -1;
- AlertDialog dialog_hero_name, dialog_delete_hero;
+ AlertDialog dialog_hero_name, dialog_delete_hero, dialog_import_backup;
  EditText edt_hero_name = null;
  
  @Override
@@ -41,31 +42,24 @@ public class MainActivity extends Zactivity
   ViewUtils.requestFloatWindow(this);
  }
 
- private void init()
+ private void reLoadData()
  {
-  // 测试代码 --start
-  selectedModel = new BaseModel("");
-  DashCircle dc1 = new DashCircle();
-  dc1.setColor(Color.YELLOW);
-  dc1.setDashStyle(30,20);
-  dc1.setDistance(595, 1080-705, 1080-200);
-  dc1.setStrokeWidth(5);
-  DashCircle dc2 = new DashCircle();
-  dc2.setColor(Color.YELLOW);
-  dc2.setDashStyle(30,20);
-  dc2.setDistance(405, 1080-795, 1080-20);
-  dc2.setStrokeWidth(5);
-//  DashCircle dc3 = new DashCircle();
-//  dc3.setColor(Color.YELLOW);
-//  dc3.setDashStyle(30,20);
-//  dc3.setDi(270);
-//  dc3.setStrokeWidth(5);
-  selectedModel.circles.add(dc1);
-  selectedModel.circles.add(dc2);
-//  choosedModel.circles.add(dc3);
-  
-  // 测试代码 --end
-  
+  models.clear();
+  models.addAll(JsonUtils.parseJsonArray(opString(Zactivity.MAIN_MODELS, null)));
+  spinnerArrayAdapter.notifyDataSetChanged();
+  if(models.size() > 0)
+  {
+   selectedIndex = 0;
+   selectedModel = models.get(selectedIndex);
+  }else
+  {
+   selectedIndex = -1;
+   selectedModel = null;
+  }
+ }
+ 
+ private void init()
+ {  
   models = JsonUtils.parseJsonArray(opString(Zactivity.MAIN_MODELS, null));
   spinnerArrayAdapter = new SpinnerArrayAdapter(this, models);
   spinner_hero = findViewById(R.id.spinner_hero);
@@ -87,12 +81,44 @@ public class MainActivity extends Zactivity
    });
   selectedIndex = opInt(Zactivity.MAIN_HERO_SEL_INDEX, -1);
   
-  if(selectedIndex >= 0)
+  if(models.size() > 0 && selectedIndex >= 0)
   {
    selectedModel = models.get(selectedIndex);
    spinner_hero.setSelection(selectedIndex);
   }
   
+ }
+ 
+ public void onExportClick(View v)
+ {
+  if(FileUtils.exportBackup(this))
+   toast("备份成功");
+  else
+   toast("备份失败");
+ }
+ 
+ public void onImportClick(View v)
+ {
+  if(dialog_import_backup == null)
+   dialog_import_backup = new AlertDialog.Builder(this)
+    .setTitle("导入备份")
+    .setMessage("导入备份会覆盖当前已有数据，确定继续？")
+    .setNegativeButton("取消", null)
+    .setPositiveButton("确定", new DialogInterface.OnClickListener()
+    {
+     @Override
+     public void onClick(DialogInterface p1, int p2)
+     {
+      if(FileUtils.importBackup(MainActivity.this))
+      {
+       toast("导入成功");
+       reLoadData();
+      }else
+       toast("导入失败");
+     }
+    })
+    .create();
+  dialog_import_backup.show();
  }
  
  public void onNewHeroClick(View v)
@@ -162,10 +188,13 @@ public class MainActivity extends Zactivity
     {
      models.remove(selectedIndex--);
      spinnerArrayAdapter.notifyDataSetChanged();
-     if(selectedIndex < 0)
-      selectedModel = null;
-     else
+     if(models.size() <= 0)
      {
+      selectedModel = null;
+     }else
+     {
+      if(selectedIndex < 0)
+       selectedIndex = 0;
       selectedModel = models.get(selectedIndex);
       spinner_hero.setSelection(selectedIndex);
      }

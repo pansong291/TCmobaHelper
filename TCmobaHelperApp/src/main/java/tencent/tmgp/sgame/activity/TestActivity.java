@@ -167,10 +167,12 @@ public class TestActivity extends Zactivity
  {
   super.onDestroy();
   if(mbitmap != null) mbitmap.recycle();
-  ipBoolean(Zactivity.TEST_FLOPOS, switch_flopos.isChecked());
-  ipBoolean(Zactivity.TEST_BGC, switch_bgc.isChecked());
-  ipBoolean(Zactivity.TEST_OVAL, switch_oval.isChecked());
-  ipString(Zactivity.TEST_CIRCLE, JsonUtils.toJsonObject(test_dc));
+  sp.edit()
+   .putBoolean(Zactivity.TEST_FLOPOS, switch_flopos.isChecked())
+   .putBoolean(Zactivity.TEST_BGC, switch_bgc.isChecked())
+   .putBoolean(Zactivity.TEST_OVAL, switch_oval.isChecked())
+   .putString(Zactivity.TEST_CIRCLE, JsonUtils.toJsonObject(test_dc))
+   .commit();
  }
  
 }

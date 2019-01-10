@@ -7,6 +7,24 @@
 	android:orientation="vertical"
 	android:padding="16dp">
 
+	<Button
+		style="?android:attr/buttonBarButtonStyle"
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:text="备份数据"
+		android:onClick="onExportClick"
+		android:background="@drawable/button"
+		android:textColor="#FF009BD2"/>
+
+	<Button
+		style="?android:attr/buttonBarButtonStyle"
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:text="导入备份"
+		android:onClick="onImportClick"
+		android:background="@drawable/button"
+		android:textColor="#FF949400"/>
+
 	<LinearLayout
 		android:layout_height="wrap_content"
 		android:layout_width="match_parent"

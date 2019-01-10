@@ -13,6 +13,8 @@ public class Zactivity extends Activity
  TEST_FLOPOS = "test_flopos", TEST_BGC = "test_bgc",
  TEST_OVAL = "test_oval",TEST_CIRCLE = "test_circle";
  
+ public static final String TAG_PACKAGE = "com.tencent.tmgp.sgame";
+ 
  public SharedPreferences sp;
 
  @Override
