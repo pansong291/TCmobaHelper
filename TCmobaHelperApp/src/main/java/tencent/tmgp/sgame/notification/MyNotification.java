@@ -1,15 +1,20 @@
 package tencent.tmgp.sgame.notification;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
+import com.tencent.tmgp.sgame.R;
+import tencent.tmgp.sgame.activity.MainActivity;
 
 public class MyNotification
 {
  public static final int MYNOTIFICATION_ID = 214;
+ public static final String CHANNEL_ID = "CHANNELID0";
  private static NotificationManager mNotifyManager;
  private static Notification mNotification;
  private static boolean isStartedNotification = false;
@@ -30,27 +35,29 @@ public class MyNotification
    {
     if(mNotification == null)
     {
-//     String appName;
-//     try{
-//      PackageInfo pif = sv.getPackageManager().getPackageInfo(sv.getPackageName(), 0);
-//      int labelRes = pif.applicationInfo.labelRes;
-//      appName = sv.getResources().getString(labelRes);
-//     }catch(Exception e)
-//     {
-//      appName = sv.getPackageName();
-//      e.printStackTrace();
-//     }
-     //mNotifyManager = (NotificationManager) sv.getSystemService(Context.NOTIFICATION_SERVICE);
-     //Intent it = new Intent(sv, EditService.class);
-     //PendingIntent pi = PendingIntent.getService(sv,0,it,PendingIntent.FLAG_UPDATE_CURRENT);
-     mNotification = new Notification.Builder(sv)
-      //.setLargeIcon(Icon.createWithResource(sv,R.drawable.ic_launcher))
-      .setContentTitle("ContentTitle")
-      .setContentText("ContentText")
-      //.setWhen(System.currentTimeMillis())
-      //.setContentIntent(pi)
+     Intent it = new Intent(sv, MainActivity.class);
+     PendingIntent pi = PendingIntent.getActivity(sv,0,it,PendingIntent.FLAG_UPDATE_CURRENT);
+     Notification.Builder builder = null;
+     if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+     {
+      NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID, "ChannelName", NotificationManager.IMPORTANCE_DEFAULT);
+      mNotifyManager = (NotificationManager)sv.getSystemService(Context.NOTIFICATION_SERVICE);
+      if(mNotifyManager != null)
+      {
+       mNotifyManager.createNotificationChannel(notificationChannel);
+      }
+      builder = new Notification.Builder(sv, CHANNEL_ID);
+     }else
+     {
+      builder = new Notification.Builder(sv);
+     }
+     mNotification = builder
+      .setSmallIcon(android.R.drawable.sym_def_app_icon)
+      .setContentTitle(sv.getResources().getString(R.string.app_name))
+      .setContentText("点此打开主界面")
+      .setContentIntent(pi)
+      .setAutoCancel(true)
       .build();
-     
     }
    }
   if(!isStartedNotification)

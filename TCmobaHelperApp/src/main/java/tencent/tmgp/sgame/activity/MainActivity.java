@@ -198,6 +198,11 @@ public class MainActivity extends Zactivity
  
  public void onCloseClick(View v)
  {
+  if(selectedIndex < 0 || selectedModel == null)
+  {
+   toast("当前无可行方案");
+   return;
+  }
   Intent intent = new Intent(this,MainService.class);
   stopService(intent);
  }
