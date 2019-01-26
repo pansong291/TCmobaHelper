@@ -92,7 +92,10 @@ public class MainActivity extends Zactivity
  public void onExportClick(View v)
  {
   if(FileUtils.exportBackup(this))
-   toast("备份成功");
+   new AlertDialog.Builder(this)
+    .setTitle("备份成功")
+    .setMessage("备份文件的绝对路径为 " + FileUtils.getBackupFilePath(this))
+    .show();
   else
    toast("备份失败");
  }

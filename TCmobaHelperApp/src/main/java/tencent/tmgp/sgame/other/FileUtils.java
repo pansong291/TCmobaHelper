@@ -27,7 +27,7 @@ public class FileUtils
   return JsonUtils.json2SP(s, z.sp);
  }
  
- private static String getBackupFilePath(Zactivity c)
+ public static String getBackupFilePath(Zactivity c)
  {
   if(backupPath == null)
   {
@@ -86,11 +86,11 @@ public class FileUtils
    Log.e(Zactivity.TAG_PACKAGE, "Directory "+pare.getAbsolutePath()+" doesn't exist or it can not be create.");
    return success;
   }
-  if(f.exists() && !f.delete())
-  {
-   Log.e(Zactivity.TAG_PACKAGE, "File "+file+" is exist and it can not be delete.");
-   return success;
-  }
+//  if(f.exists() && !f.delete())
+//  {
+//   Log.e(Zactivity.TAG_PACKAGE, "File "+file+" is exist and it can not be delete.");
+//   return success;
+//  }
   FileOutputStream fos = null;
   try
   {

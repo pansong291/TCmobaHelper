@@ -13,8 +13,9 @@ public class JsonUtils
  public static final String JSON_NAME = "name",
  JSON_CIRCLE = "circle", JSON_COLOR = "color",
  JSON_SOLID = "solid", JSON_SPACE = "space",
- JSON_LEFT = "left", JSON_TOP = "top",
- JSON_BOTTOM = "bottom", JSON_STROKE = "stroke";  
+ JSON_TOP = "top", JSON_BOTTOM = "bottom",
+ JSON_LEFT = "left",JSON_RIGHT = "right",
+ JSON_STROKE = "stroke";  
  
  private JsonUtils()
  {}
@@ -51,9 +52,15 @@ public class JsonUtils
   try
   {
    JSONObject jo = new JSONObject(json);
+   // 增加右距自定义后，原数据没有该项
+   // 直接取出会抛出异常
+   // 所以先判断，没有就直接放入默认值
+   if(!jo.has(JSON_RIGHT))
+    jo.put(JSON_RIGHT, 1000);
    dc.setColor(jo.opt(JSON_COLOR));
    dc.setDashStyle((float)jo.optDouble(JSON_SOLID), (float)jo.optDouble(JSON_SPACE));
-   dc.setDistance((float)jo.optDouble(JSON_LEFT), (float)jo.optDouble(JSON_TOP), (float)jo.optDouble(JSON_BOTTOM));
+   dc.setDistance((float)jo.optDouble(JSON_TOP), (float)jo.optDouble(JSON_BOTTOM),
+                  (float)jo.optDouble(JSON_LEFT), (float)jo.optDouble(JSON_RIGHT));
    dc.setStrokeWidth((float)jo.optDouble(JSON_STROKE));
   }catch(Exception e)
   {
@@ -73,9 +80,10 @@ public class JsonUtils
    jo.put(JSON_SOLID, dc.solidLineLength);
    jo.put(JSON_SPACE, dc.spaceLength);
    jo.put(JSON_STROKE, dc.strokeWidth);
-   jo.put(JSON_LEFT, dc.mRectF.left);
    jo.put(JSON_TOP, dc.mRectF.top);
    jo.put(JSON_BOTTOM, dc.mRectF.bottom);
+   jo.put(JSON_LEFT, dc.mRectF.left);
+   jo.put(JSON_RIGHT, dc.mRectF.right);
    str = jo.toString();
   }catch(Exception e)
   {
@@ -98,10 +106,16 @@ public class JsonUtils
     for(int j = 0;j < jaoa.length();j++)
     {
      JSONObject jaoao = jaoa.optJSONObject(j);
+     // 增加右距自定义后，原数据没有该项
+     // 直接取出会抛出异常
+     // 所以先判断，没有就直接放入默认值
+     if(!jaoao.has(JSON_RIGHT))
+      jaoao.put(JSON_RIGHT, 1000);
      DashCircle dc = new DashCircle();
      dc.setColor(jaoao.opt(JSON_COLOR));
      dc.setDashStyle((float)jaoao.optDouble(JSON_SOLID), (float)jaoao.optDouble(JSON_SPACE));
-     dc.setDistance((float)jaoao.optDouble(JSON_LEFT), (float)jaoao.optDouble(JSON_TOP), (float)jaoao.optDouble(JSON_BOTTOM));
+     dc.setDistance((float)jaoao.optDouble(JSON_TOP), (float)jaoao.optDouble(JSON_BOTTOM),
+                    (float)jaoao.optDouble(JSON_LEFT), (float)jaoao.optDouble(JSON_RIGHT));
      dc.setStrokeWidth((float)jaoao.optDouble(JSON_STROKE));
      bm.circles.add(dc);
     }
@@ -134,9 +148,10 @@ public class JsonUtils
      jaoao.put(JSON_SOLID, dc.solidLineLength);
      jaoao.put(JSON_SPACE, dc.spaceLength);
      jaoao.put(JSON_STROKE, dc.strokeWidth);
-     jaoao.put(JSON_LEFT, dc.mRectF.left);
      jaoao.put(JSON_TOP, dc.mRectF.top);
      jaoao.put(JSON_BOTTOM, dc.mRectF.bottom);
+     jaoao.put(JSON_LEFT, dc.mRectF.left);
+     jaoao.put(JSON_RIGHT, dc.mRectF.right);
      jaoa.put(jaoao);
     }
     jao.put(JSON_CIRCLE, jaoa);

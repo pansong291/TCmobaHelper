@@ -83,9 +83,10 @@ public class TestActivity extends Zactivity
   txt_selpic.setOnClickListener(listener);
   txt_value = findViewById(R.id.txt_value);
   txt_value.setText(
-   "左=" + test_dc.mRectF.left
-   + "\n顶=" + test_dc.mRectF.top
-   + "\n底=" + test_dc.mRectF.bottom);
+   "顶=" + test_dc.mRectF.top
+   + "\n底=" + test_dc.mRectF.bottom
+   + "\n左=" + test_dc.mRectF.left
+   + "\n右=" + test_dc.mRectF.right);
   txt_value.setOnClickListener(listener);
   txt_value.setOnLongClickListener(listener);
   txt = new TextView[6];
@@ -100,7 +101,8 @@ public class TestActivity extends Zactivity
   switch_oval = findViewById(R.id.switch_oval);
   switch_oval.setOnCheckedChangeListener(listener);
   spinner_tblr = findViewById(R.id.spinner_tblr);
-  ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,new String[]{"左部","顶部","底部"});
+  ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+   this,android.R.layout.simple_spinner_item,new String[]{"顶部","底部","左部","右部"});
   adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
   spinner_tblr.setAdapter(adapter);
   spinner_tblr.setOnItemSelectedListener(listener);
@@ -117,7 +119,7 @@ public class TestActivity extends Zactivity
   edt_stroke.setText("" + (int)test_dc.strokeWidth);
   edt_stroke.setOnEditorActionListener(listener);
   edt_value = findViewById(R.id.edt_value);
-  edt_value.setText("" + (int)test_dc.mRectF.left);
+  edt_value.setText("" + (int)test_dc.mRectF.top);
   edt_value.setOnEditorActionListener(listener);
   switch_flopos.setChecked(opBoolean(Zactivity.TEST_FLOPOS, false));
   switch_oval.setChecked(opBoolean(Zactivity.TEST_OVAL, false));

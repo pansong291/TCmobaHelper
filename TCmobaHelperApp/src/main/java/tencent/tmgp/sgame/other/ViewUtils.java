@@ -117,7 +117,7 @@ public class ViewUtils
     //AlertDialog wad = 
     new AlertDialog.Builder(ac)
      .setTitle("提示")
-     .setMessage("需要为本应用开启悬浮窗权限，请在弹出的页面中设置为允许。\n\nvivo等设备若重新打开软件仍显示此对话框，请前往设置-更多设置-权限管理，为本软件开启悬浮窗权限。")
+     .setMessage("需要为本应用开启悬浮窗权限，请在弹出的页面中设置为允许。\n\nvivo等设备若重新打开软件仍显示此对话框，请自行前往设置-更多设置-权限管理，为本软件开启悬浮窗权限。")
      .setCancelable(false)
      .setNegativeButton("取消", null)
      .setPositiveButton("确定", new Dialog.OnClickListener()

@@ -59,6 +59,7 @@ public class CircleListAdapter extends BaseAdapter
    viewHolder = new ViewHolder();
    view = LayoutInflater.from(mContext).inflate(R.layout.listitem_circle, null);
    viewHolder.txt_left = view.findViewById(R.id.txt_left);
+   viewHolder.txt_right = view.findViewById(R.id.txt_right);
    viewHolder.txt_top = view.findViewById(R.id.txt_top);
    viewHolder.txt_bottom = view.findViewById(R.id.txt_bottom);
    viewHolder.txt_solid = view.findViewById(R.id.txt_solid);
@@ -74,6 +75,7 @@ public class CircleListAdapter extends BaseAdapter
   DashCircle dc = list.get(position);
   viewHolder.view_color.setInitColor(dc.color);
   viewHolder.txt_left.setText("左距：" + (int)dc.mRectF.left);
+  viewHolder.txt_right.setText("右距：" + (int)dc.mRectF.right);
   viewHolder.txt_top.setText("顶距：" + (int)dc.mRectF.top);
   viewHolder.txt_bottom.setText("底距：" + (int)dc.mRectF.bottom);
   viewHolder.txt_solid.setText("实长：" + (int)dc.solidLineLength);
@@ -86,6 +88,7 @@ public class CircleListAdapter extends BaseAdapter
  private final static class ViewHolder
  {
   TextView txt_left;
+  TextView txt_right;
   TextView txt_top;
   TextView txt_bottom;
   TextView txt_solid;

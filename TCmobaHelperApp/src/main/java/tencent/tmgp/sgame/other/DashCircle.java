@@ -37,23 +37,24 @@ public class DashCircle
   setColor(dc.color);
   setStrokeWidth(dc.strokeWidth);
   setDashStyle(dc.solidLineLength,dc.spaceLength);
-  setDistance(dc.mRectF.left,dc.mRectF.top,dc.mRectF.bottom);
+  setDistance(dc.mRectF.top,dc.mRectF.bottom,dc.mRectF.left,dc.mRectF.right);
  }
  
  public void defInit()
  {
   setColor(Color.CYAN);
   setDashStyle(30, 20);
-  setDistance(20, 20, 1000);
+  setDistance(20, 1000, 20, 1000);
   setStrokeWidth(10);
  }
  
  // 设置轴长
- public void setDistance(float l, float t, float b)
+ public void setDistance(float t, float b, float l, float r)
  {
   mRectF.top = t;
   mRectF.bottom = b;
   mRectF.left = l;
+  mRectF.right = r;
  }
  
  // 设置颜色

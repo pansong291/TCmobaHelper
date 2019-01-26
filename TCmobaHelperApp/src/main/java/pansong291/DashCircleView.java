@@ -41,11 +41,11 @@ public class DashCircleView extends View
  public void setBaseModel(BaseModel bm)
  {
   mBaseModel = bm;
-  for(int i = 0;i < mBaseModel.circles.size();i++)
-  {
-   RectF rectf = mBaseModel.circles.get(i).mRectF;
-   rectf.right = ViewUtils.getScreenHeight(getContext()) - rectf.left;
-  }
+//  for(int i = 0;i < mBaseModel.circles.size();i++)
+//  {
+//   RectF rectf = mBaseModel.circles.get(i).mRectF;
+//   rectf.right = ViewUtils.getScreenHeight(getContext()) - rectf.left;
+//  }
  }
 
  @Override
@@ -78,7 +78,7 @@ public class DashCircleView extends View
  public void setTestCircle(DashCircle dc)
  {
   mDashCircle = dc;
-  mDashCircle.mRectF.right = ViewUtils.getScreenHeight(getContext()) - mDashCircle.mRectF.left;
+//  mDashCircle.mRectF.right = ViewUtils.getScreenHeight(getContext()) - mDashCircle.mRectF.left;
  }
 
  public DashCircle getTestCircle()
@@ -91,14 +91,17 @@ public class DashCircleView extends View
   switch(i)
   {
    case 0:
-    mDashCircle.mRectF.left = f;
-    mDashCircle.mRectF.right = ViewUtils.getScreenHeight(getContext()) - f;
-    break;
-   case 1:
     mDashCircle.mRectF.top = f;
     break;
-   case 2:
+   case 1:
     mDashCircle.mRectF.bottom = f;
+    break;
+   case 2:
+    mDashCircle.mRectF.left = f;
+//    mDashCircle.mRectF.right = ViewUtils.getScreenHeight(getContext()) - f;
+    break;
+   case 3:
+    mDashCircle.mRectF.right = f;
     break;
   }
  }

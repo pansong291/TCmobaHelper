@@ -28,7 +28,8 @@ public class ModelEditActivity extends Zactivity
  View view_dialog_circle_data = null;
  View linearlayout_color;
  public TestView view_color;
- public EditText edt_left, edt_top, edt_bottom, edt_solid, edt_space, edt_stroke;
+ public EditText edt_solid, edt_space, edt_stroke,
+  edt_top, edt_bottom, edt_left, edt_right;
  
  String newHeroName = null;
  
@@ -97,7 +98,7 @@ public class ModelEditActivity extends Zactivity
   DashCircle dc = new DashCircle();
   dc.setColor(Color.rgb(0,255,255));
   dc.setDashStyle(30,20);
-  dc.setDistance(20,20,1000);
+  dc.setDistance(20,1000,20,1000);
   dc.setStrokeWidth(10);
   MainActivity.selectedModel.circles.add(dc);
   circleListAdapter.notifyDataSetChanged();
@@ -176,6 +177,7 @@ public class ModelEditActivity extends Zactivity
    linearlayout_color.setOnClickListener(listener);
    view_color = view_dialog_circle_data.findViewById(R.id.view_color);
    edt_left = view_dialog_circle_data.findViewById(R.id.edt_left);
+   edt_right = view_dialog_circle_data.findViewById(R.id.edt_right);
    edt_top = view_dialog_circle_data.findViewById(R.id.edt_top);
    edt_bottom = view_dialog_circle_data.findViewById(R.id.edt_bottom);
    edt_solid = view_dialog_circle_data.findViewById(R.id.edt_solid);
@@ -197,6 +199,7 @@ public class ModelEditActivity extends Zactivity
   currentCircle = MainActivity.selectedModel.circles.get(which);
   view_color.setInitColor(currentCircle.color);
   edt_left.setText(""+(int)currentCircle.mRectF.left);
+  edt_right.setText(""+(int)currentCircle.mRectF.right);
   edt_top.setText(""+(int)currentCircle.mRectF.top);
   edt_bottom.setText(""+(int)currentCircle.mRectF.bottom);
   edt_solid.setText(""+(int)currentCircle.solidLineLength);

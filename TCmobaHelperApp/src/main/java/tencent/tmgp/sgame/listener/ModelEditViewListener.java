@@ -62,6 +62,8 @@ DialogInterface.OnClickListener, OnClickListener, OnItemLongClickListener
   
   mea.currentCircle.mRectF.left = mea.edt_left.length() > 0 ?
    Integer.parseInt(mea.edt_left.getText().toString()) : 0;
+  mea.currentCircle.mRectF.right = mea.edt_right.length() > 0 ?
+   Integer.parseInt(mea.edt_right.getText().toString()) : 0;
   mea.currentCircle.mRectF.top = mea.edt_top.length() > 0 ?
    Integer.parseInt(mea.edt_top.getText().toString()) : 0;
   mea.currentCircle.mRectF.bottom = mea.edt_bottom.length() > 0 ?

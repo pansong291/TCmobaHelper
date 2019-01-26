@@ -173,13 +173,16 @@ OnCheckedChangeListener, OnItemSelectedListener, OnEditorActionListener
   switch(tblr)
   {
    case 0:
-    f = test.test_dc.mRectF.left;
-    break;
-   case 1:
     f = test.test_dc.mRectF.top;
     break;
-   case 2:
+   case 1:
     f = test.test_dc.mRectF.bottom;
+    break;
+   case 2:
+    f = test.test_dc.mRectF.left;
+    break;
+   case 3:
+    f = test.test_dc.mRectF.right;
     break;
   }
   test.edt_value.setText("" + (int)f);
@@ -224,9 +227,10 @@ OnCheckedChangeListener, OnItemSelectedListener, OnEditorActionListener
       i1 = Integer.parseInt(test.edt_value.getText().toString());
       test.dashcircleview.setRectF(tblr, i1);
       test.txt_value.setText(
-       "左=" + test.test_dc.mRectF.left
-       + "\n顶=" + test.test_dc.mRectF.top
-       + "\n底=" + test.test_dc.mRectF.bottom);
+       "顶=" + test.test_dc.mRectF.top
+       + "\n底=" + test.test_dc.mRectF.bottom
+       + "\n左=" + test.test_dc.mRectF.left
+       + "\n右=" + test.test_dc.mRectF.right);
      }
      break;
    }
