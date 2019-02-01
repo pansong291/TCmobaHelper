@@ -20,6 +20,9 @@ import tencent.tmgp.sgame.other.JsonUtils;
 import tencent.tmgp.sgame.other.ViewUtils;
 import tencent.tmgp.sgame.service.MainService;
 import tencent.tmgp.sgame.other.FileUtils;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.net.Uri;
 
 public class MainActivity extends Zactivity 
 {
@@ -149,7 +152,7 @@ public class MainActivity extends Zactivity
        return;
       }
       edt_hero_name.getText().clear();
-      selectedModel = new BaseModel(hero);
+      //selectedModel = new BaseModel(hero);
       selectedIndex = models.size();
       Intent it = new Intent(MainActivity.this,ModelEditActivity.class);
       it.putExtra(JsonUtils.JSON_NAME,hero);
@@ -168,7 +171,6 @@ public class MainActivity extends Zactivity
    toast("当前无可行方案");
    return;
   }
-  selectedModel = new BaseModel(selectedModel);
   Intent it = new Intent(this,ModelEditActivity.class);
   startActivity(it);
  }
@@ -237,6 +239,18 @@ public class MainActivity extends Zactivity
   }
   Intent intent = new Intent(this,MainService.class);
   stopService(intent);
+ }
+
+ @Override
+ public boolean onCreateOptionsMenu(Menu menu)
+ {
+  Intent itHelp = new Intent(Intent.ACTION_VIEW);
+  itHelp.setData(Uri.parse("https://github.com/pansong291/TCmobaHelper/wiki"));
+  menu.add("帮助")
+  .setIcon(android.R.drawable.ic_menu_help)
+  .setIntent(itHelp)
+  .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+  return super.onCreateOptionsMenu(menu);
  }
 
  @Override

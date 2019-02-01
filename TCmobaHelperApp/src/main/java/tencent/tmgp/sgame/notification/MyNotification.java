@@ -9,7 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import com.tencent.tmgp.sgame.R;
-import tencent.tmgp.sgame.activity.MainActivity;
+import tencent.tmgp.sgame.service.MainService;
 
 public class MyNotification
 {
@@ -35,8 +35,9 @@ public class MyNotification
    {
     if(mNotification == null)
     {
-     Intent it = new Intent(sv, MainActivity.class);
-     PendingIntent pi = PendingIntent.getActivity(sv,0,it,PendingIntent.FLAG_UPDATE_CURRENT);
+     Intent it = new Intent(sv, MainService.class);
+     it.putExtra(MainService.TAG, true);
+     PendingIntent pi = PendingIntent.getService(sv,0,it,PendingIntent.FLAG_UPDATE_CURRENT);
      Notification.Builder builder = null;
      if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
      {
@@ -54,7 +55,7 @@ public class MyNotification
      mNotification = builder
       .setSmallIcon(android.R.drawable.sym_def_app_icon)
       .setContentTitle(sv.getResources().getString(R.string.app_name))
-      .setContentText("点此打开主界面")
+      .setContentText("点此修改方案")
       .setContentIntent(pi)
       .setAutoCancel(true)
       .build();

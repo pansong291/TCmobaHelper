@@ -9,7 +9,7 @@
 	<com.a4455jkjh.colorpicker.view.TestView
 		android:layout_height="32dp"
 		android:layout_width="36dp"
-		android:id="@+id/view_color"
+		android:id="@+id/tst_color"
 		android:layout_margin="12dp"/>
 
 	<LinearLayout

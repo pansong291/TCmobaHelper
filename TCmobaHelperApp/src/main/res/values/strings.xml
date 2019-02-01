@@ -3,7 +3,7 @@
 
     <string name="app_name">技能三围</string>
     <string name="hello_user">Hello User!</string>
-    <string name="update_msg">v1.2\n为解决全面屏手机在横屏下左右偏移的情况，增加了右部距离自定义功能\n增加备份文件的路径提示\n\nv1.1\n第一个发布的版本</string>
+    <string name="update_msg">v1.3\n增加启动方案后可修改调整方案的功能，对调整干将莫邪这类技能范围不明显的英雄比较方便\n增加帮助文档\n\nv1.2\n为解决全面屏手机在横屏下左右偏移的情况，增加了右部距离自定义功能\n增加备份文件的路径提示\n\nv1.1\n第一个发布的版本</string>
     
     <color name="color_alpha">#00000000</color>
     <color name="color_btn_down">#F0F0F0</color>

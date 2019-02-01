@@ -30,73 +30,76 @@
 		<com.a4455jkjh.colorpicker.view.TestView
 			android:layout_height="32dp"
 			android:layout_width="36dp"
-			android:id="@+id/view_color"
+			android:id="@+id/tst_color"
 			android:layout_margin="12dp"/>
 
 	</LinearLayout>
 
-    <LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:orientation="horizontal"
+		android:gravity="center_vertical">
 
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="实线长度"
-            android:textColor="#FF000000"
-            android:textSize="18sp"/>
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="实线长度"
+			android:textColor="#FF000000"
+			android:textSize="18sp"/>
 
-        <EditText
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:id="@+id/edt_solid"
-            android:inputType="number"/>
+		<EditText
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:id="@+id/edt_solid"
+			android:inputType="number"
+			android:textColor="#FF000000"/>
 
-    </LinearLayout>
+	</LinearLayout>
 
-    <LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:orientation="horizontal"
+		android:gravity="center_vertical">
 
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="间隙长度"
-            android:textColor="#FF000000"
-            android:textSize="18sp"/>
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="间隙长度"
+			android:textColor="#FF000000"
+			android:textSize="18sp"/>
 
-        <EditText
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:id="@+id/edt_space"
-            android:inputType="number"/>
+		<EditText
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:id="@+id/edt_space"
+			android:inputType="number"
+			android:textColor="#FF000000"/>
 
-    </LinearLayout>
+	</LinearLayout>
 
-    <LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:orientation="horizontal"
+		android:gravity="center_vertical">
 
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="曲线厚度"
-            android:textColor="#FF000000"
-            android:textSize="18sp"/>
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="曲线厚度"
+			android:textColor="#FF000000"
+			android:textSize="18sp"/>
 
-        <EditText
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:id="@+id/edt_stroke"
-            android:inputType="number"/>
+		<EditText
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:id="@+id/edt_stroke"
+			android:inputType="number"
+			android:textColor="#FF000000"/>
 
-    </LinearLayout>
+	</LinearLayout>
 
 	<LinearLayout
 		android:layout_height="wrap_content"
@@ -115,7 +118,8 @@
 			android:layout_height="wrap_content"
 			android:layout_width="match_parent"
 			android:id="@+id/edt_top"
-			android:inputType="numberSigned"/>
+			android:inputType="numberSigned"
+			android:textColor="#FF000000"/>
 
 	</LinearLayout>
 
@@ -136,51 +140,54 @@
 			android:layout_height="wrap_content"
 			android:layout_width="match_parent"
 			android:id="@+id/edt_bottom"
-			android:inputType="numberSigned"/>
+			android:inputType="numberSigned"
+			android:textColor="#FF000000"/>
 
 	</LinearLayout>
 
-    <LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:orientation="horizontal"
+		android:gravity="center_vertical">
 
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="左部距离"
-            android:textColor="#FF000000"
-            android:textSize="18sp"/>
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="左部距离"
+			android:textColor="#FF000000"
+			android:textSize="18sp"/>
 
-        <EditText
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:id="@+id/edt_left"
-            android:inputType="numberSigned"/>
+		<EditText
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:id="@+id/edt_left"
+			android:inputType="numberSigned"
+			android:textColor="#FF000000"/>
 
-    </LinearLayout>
+	</LinearLayout>
 
-    <LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:orientation="horizontal"
+		android:gravity="center_vertical">
 
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="右部距离"
-            android:textColor="#FF000000"
-            android:textSize="18sp"/>
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:text="右部距离"
+			android:textColor="#FF000000"
+			android:textSize="18sp"/>
 
-        <EditText
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:id="@+id/edt_right"
-            android:inputType="numberSigned"/>
+		<EditText
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:id="@+id/edt_right"
+			android:inputType="numberSigned"
+			android:textColor="#FF000000"/>
 
-    </LinearLayout>
+	</LinearLayout>
 
 </LinearLayout>
 

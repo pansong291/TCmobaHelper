@@ -42,14 +42,14 @@ OnCheckedChangeListener, OnItemSelectedListener, OnEditorActionListener
   switch(p1.getId())
   {
    case R.id.txt_value:
-    test.linearlayout_test.setVisibility(8 - test.linearlayout_test.getVisibility());
+    test.linearlayout_edit.setVisibility(8 - test.linearlayout_edit.getVisibility());
     break;
    case R.id.txt_selpic:
     Intent it = new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
     it.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
     test.startActivityForResult(Intent.createChooser(it, "选择图片"), test.TEST_REQUEST_CODE);
     break;
-   case R.id.test_color:
+   case R.id.tst_color:
     if(dialog_color_picker == null)
      dialog_color_picker = new ColorPickerDialog(test)
       .setTitle("选择颜色")
@@ -64,7 +64,7 @@ OnCheckedChangeListener, OnItemSelectedListener, OnEditorActionListener
        @Override
        public void onColorChanged(int color)
        {
-        test.test_color.setInitColor(color);
+        test.tst_color.setInitColor(color);
         test.test_dc.setColor(color);
         test.dashcircleview.invalidate();
        }
@@ -76,7 +76,7 @@ OnCheckedChangeListener, OnItemSelectedListener, OnEditorActionListener
        }
       })
       .create();
-    dialog_color_picker.show(test.test_color.getColor());
+    dialog_color_picker.show(test.tst_color.getColor());
     break;
   }
  }

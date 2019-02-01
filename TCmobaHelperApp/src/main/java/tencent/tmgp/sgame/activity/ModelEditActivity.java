@@ -14,9 +14,11 @@ import tencent.tmgp.sgame.adapter.CircleListAdapter;
 import tencent.tmgp.sgame.listener.ModelEditViewListener;
 import tencent.tmgp.sgame.other.DashCircle;
 import tencent.tmgp.sgame.other.JsonUtils;
+import tencent.tmgp.sgame.other.BaseModel;
 
 public class ModelEditActivity extends Zactivity
 {
+ public BaseModel currentModel;
  ListView list_circle;
  public CircleListAdapter circleListAdapter;
  ModelEditViewListener listener;
@@ -27,7 +29,7 @@ public class ModelEditActivity extends Zactivity
  EditText edt_hero_name;
  View view_dialog_circle_data = null;
  View linearlayout_color;
- public TestView view_color;
+ public TestView tst_color;
  public EditText edt_solid, edt_space, edt_stroke,
   edt_top, edt_bottom, edt_left, edt_right;
  
@@ -41,9 +43,16 @@ public class ModelEditActivity extends Zactivity
   super.onCreate(savedInstanceState);
   setContentView(R.layout.activity_editmodel);
 
+  
   newHeroName = getIntent().getStringExtra(JsonUtils.JSON_NAME);
   if(newHeroName == null || newHeroName.isEmpty())
-   newHeroName = MainActivity.selectedModel.name;
+  {
+   currentModel = new BaseModel(MainActivity.selectedModel);
+   newHeroName = currentModel.name;
+  }else
+  {
+   currentModel = new BaseModel(newHeroName);
+  }
   setTitle(newHeroName);
   
   init();
@@ -53,7 +62,7 @@ public class ModelEditActivity extends Zactivity
  private void init()
  {
   list_circle = findViewById(R.id.list_circle);
-  circleListAdapter = new CircleListAdapter(this, MainActivity.selectedModel.circles);
+  circleListAdapter = new CircleListAdapter(this, currentModel.circles);
   listener = new ModelEditViewListener(this);
   list_circle.setOnItemClickListener(listener);
   list_circle.setOnItemLongClickListener(listener);
@@ -74,7 +83,7 @@ public class ModelEditActivity extends Zactivity
      public void onClick(DialogInterface p1, int p2)
      {
       String hero = edt_hero_name.getText().toString();
-      if(hero.equals(MainActivity.selectedModel.name))
+      if(hero.equals(currentModel.name))
        return;
       if(JsonUtils.containsName(MainActivity.models, hero))
       {
@@ -83,13 +92,13 @@ public class ModelEditActivity extends Zactivity
       }
       dataChanged = true;
       ModelEditActivity.this.setTitle(hero);
-      MainActivity.selectedModel.name = hero;
+      currentModel.name = hero;
      }
     })
     .setNegativeButton("取消",null)
     .create();
   dialog_hero_name.show();
-  edt_hero_name.setText(MainActivity.selectedModel.name);
+  edt_hero_name.setText(currentModel.name);
  }
  
  public void onNewCircleClick(View v)
@@ -100,7 +109,7 @@ public class ModelEditActivity extends Zactivity
   dc.setDashStyle(30,20);
   dc.setDistance(20,1000,20,1000);
   dc.setStrokeWidth(10);
-  MainActivity.selectedModel.circles.add(dc);
+  currentModel.circles.add(dc);
   circleListAdapter.notifyDataSetChanged();
  }
  
@@ -113,15 +122,13 @@ public class ModelEditActivity extends Zactivity
   }
   if(MainActivity.selectedIndex >= MainActivity.models.size())
   {
-//   MainActivity.jsonUtils.add(MainActivity.selectedModel);
-   MainActivity.models.add(MainActivity.selectedModel);
+   MainActivity.models.add(currentModel);
    MainActivity.spinnerArrayAdapter.notifyDataSetChanged();
    MainActivity.spinner_hero.setSelection(MainActivity.selectedIndex);
   }else
   {
-//   MainActivity.jsonUtils.set(MainActivity.selectedIndex, MainActivity.selectedModel);
-   MainActivity.models.set(MainActivity.selectedIndex, MainActivity.selectedModel);
-   MainActivity.spinnerArrayAdapter.notifyDataSetChanged();
+   MainActivity.models.set(MainActivity.selectedIndex, currentModel);
+   MainActivity.selectedModel = currentModel;
   }
   ipString(Zactivity.MAIN_MODELS, JsonUtils.toJsonArray(MainActivity.models));
   finish();
@@ -143,17 +150,17 @@ public class ModelEditActivity extends Zactivity
     @Override
     public void onClick(DialogInterface p1, int p2)
     {
-     if(MainActivity.selectedIndex >= 0)
-     {
-      if(MainActivity.selectedIndex < MainActivity.models.size())
-       MainActivity.selectedModel = MainActivity.models.get(MainActivity.selectedIndex);
-      else
-      {
+//     if(MainActivity.selectedIndex >= 0)
+//     {
+//      if(MainActivity.selectedIndex < MainActivity.models.size()){
+//       MainActivity.selectedModel = MainActivity.models.get(MainActivity.selectedIndex);
+//      }else
+//      {
        MainActivity.selectedIndex = MainActivity.spinner_hero.getSelectedItemPosition();
-       MainActivity.selectedModel = MainActivity.selectedIndex < 0 ?
-        null : MainActivity.models.get(MainActivity.selectedIndex);
-      }
-     }
+//       MainActivity.selectedModel = MainActivity.selectedIndex < 0 ?
+//        null : MainActivity.models.get(MainActivity.selectedIndex);
+//      }
+//     }
      ModelEditActivity.this.finish();
     }
    })
@@ -175,7 +182,7 @@ public class ModelEditActivity extends Zactivity
    view_dialog_circle_data = LayoutInflater.from(this).inflate(R.layout.dialog_circle,null);
    linearlayout_color = view_dialog_circle_data.findViewById(R.id.linearlayout_color);
    linearlayout_color.setOnClickListener(listener);
-   view_color = view_dialog_circle_data.findViewById(R.id.view_color);
+   tst_color = view_dialog_circle_data.findViewById(R.id.tst_color);
    edt_left = view_dialog_circle_data.findViewById(R.id.edt_left);
    edt_right = view_dialog_circle_data.findViewById(R.id.edt_right);
    edt_top = view_dialog_circle_data.findViewById(R.id.edt_top);
@@ -196,8 +203,8 @@ public class ModelEditActivity extends Zactivity
   
   dialog_circle_data.setTitle("曲线" + (1 + which));
   
-  currentCircle = MainActivity.selectedModel.circles.get(which);
-  view_color.setInitColor(currentCircle.color);
+  currentCircle = currentModel.circles.get(which);
+  tst_color.setInitColor(currentCircle.color);
   edt_left.setText(""+(int)currentCircle.mRectF.left);
   edt_right.setText(""+(int)currentCircle.mRectF.right);
   edt_top.setText(""+(int)currentCircle.mRectF.top);

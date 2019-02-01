@@ -9,6 +9,7 @@ import com.a4455jkjh.colorpicker.view.ColorPickerLayout;
 import com.a4455jkjh.colorpicker.view.OnColorChangedListener;
 import android.content.ClipData;
 import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
 
 public class ColorPickerDialog implements DialogInterface.OnClickListener {
 	private final AlertDialog.Builder builder;
@@ -19,7 +20,7 @@ public class ColorPickerDialog implements DialogInterface.OnClickListener {
     
 
 	public ColorPickerDialog(Context c) {
-		this.c = c.getApplicationContext();
+		this.c = c;
 		listener = null;
 		builder = new AlertDialog.Builder(c);
 		picker = new ColorPickerLayout(c);
@@ -56,6 +57,9 @@ public class ColorPickerDialog implements DialogInterface.OnClickListener {
 		c = null;
 		dialog = null;
 	}
+    public Window getWindow() {
+        return dialog.getWindow();
+    }
 	public ColorPickerDialog setOnColorChangedListener(OnColorChangedListener listener) {
 		this.listener = listener;
 		return this;

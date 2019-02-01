@@ -64,11 +64,21 @@ public class DashCircle
   mPaint.setColor(color);
  }
  
+ public void setSolid(float solid)
+ {
+  setDashStyle(solid, spaceLength);
+ }
+ 
+ public void setSpace(float space)
+ {
+  setDashStyle(solidLineLength, space);
+ }
+ 
  // 设置虚线的实线长度和间隔长度
  public void setDashStyle(float solid, float space)
  {
-  solidLineLength = solid;
-  spaceLength = space;
+  solidLineLength = solid < 0 ? 0 : solid;
+  spaceLength = space < 0 ? 0 : space;
   mPaint.setPathEffect(new DashPathEffect(new float[]{solidLineLength, spaceLength}, 0));
  }
  

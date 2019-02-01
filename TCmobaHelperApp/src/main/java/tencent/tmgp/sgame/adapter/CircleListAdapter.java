@@ -65,7 +65,7 @@ public class CircleListAdapter extends BaseAdapter
    viewHolder.txt_solid = view.findViewById(R.id.txt_solid);
    viewHolder.txt_space = view.findViewById(R.id.txt_space);
    viewHolder.txt_stroke = view.findViewById(R.id.txt_stroke);
-   viewHolder.view_color = view.findViewById(R.id.view_color);
+   viewHolder.tst_color = view.findViewById(R.id.tst_color);
    view.setTag(viewHolder);
   }else
   {
@@ -73,7 +73,7 @@ public class CircleListAdapter extends BaseAdapter
   }
   
   DashCircle dc = list.get(position);
-  viewHolder.view_color.setInitColor(dc.color);
+  viewHolder.tst_color.setInitColor(dc.color);
   viewHolder.txt_left.setText("左距：" + (int)dc.mRectF.left);
   viewHolder.txt_right.setText("右距：" + (int)dc.mRectF.right);
   viewHolder.txt_top.setText("顶距：" + (int)dc.mRectF.top);
@@ -94,6 +94,6 @@ public class CircleListAdapter extends BaseAdapter
   TextView txt_solid;
   TextView txt_space;
   TextView txt_stroke;
-  TestView view_color;
+  TestView tst_color;
  }
 }

@@ -9,8 +9,8 @@ android {
         applicationId "com.tencent.tmgp.sgame"
         minSdkVersion 14
         targetSdkVersion 21
-        versionCode 20190126
-        versionName "1.2"
+        versionCode 20190131
+        versionName "1.3"
     }
     buildTypes {
         release {

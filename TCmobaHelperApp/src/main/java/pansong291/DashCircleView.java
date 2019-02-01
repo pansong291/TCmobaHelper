@@ -14,7 +14,7 @@ public class DashCircleView extends View
  BaseModel mBaseModel = null;
 
  boolean test = false;
- boolean drawOval = false;
+ boolean drawOval = true;
 
  DashCircle mDashCircle = null;
 
@@ -52,17 +52,27 @@ public class DashCircleView extends View
  protected void onDraw(Canvas canvas)
  {
   super.onDraw(canvas);
-  if(test && mDashCircle != null)
+  if(test && mDashCircle != null && mDashCircle.strokeWidth > 0)
   {
    if(drawOval)
-    canvas.drawOval(mDashCircle.mRectF,mDashCircle.mPaint);
+    canvas.drawOval(mDashCircle.mRectF, mDashCircle.mPaint);
    else
-    canvas.drawRect(mDashCircle.mRectF,mDashCircle.mPaint);
+    canvas.drawRect(mDashCircle.mRectF, mDashCircle.mPaint);
   }else if(mBaseModel != null && mBaseModel.circles != null)
+  {
+   DashCircle dc;
    for(int i = 0;i < mBaseModel.circles.size();i++)
    {
-    canvas.drawOval(mBaseModel.circles.get(i).mRectF, mBaseModel.circles.get(i).mPaint);
+    dc = mBaseModel.circles.get(i);
+    if(dc.strokeWidth > 0)
+    {
+     if(drawOval)
+      canvas.drawOval(dc.mRectF, dc.mPaint);
+     else
+      canvas.drawRect(dc.mRectF, dc.mPaint);
+    }
    }
+  }
  }
 
  public void setTest(boolean b)

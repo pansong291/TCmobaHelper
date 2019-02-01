@@ -39,7 +39,7 @@ public class ViewUtils
   return statusHeight;
  }
  
- //获取状态栏高度
+ //获取屏幕高度
  public static int getScreenHeight(Context c)
  {
   if(screenHeight <= 0)

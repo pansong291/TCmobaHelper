@@ -43,7 +43,7 @@ DialogInterface.OnClickListener, OnClickListener, OnItemLongClickListener
      public void onClick(DialogInterface p5, int p6)
      {
       mea.dataChanged = true;
-      MainActivity.selectedModel.circles.remove(p3);
+      mea.currentModel.circles.remove(p3);
       mea.circleListAdapter.notifyDataSetChanged();
      }
     })
@@ -58,7 +58,7 @@ DialogInterface.OnClickListener, OnClickListener, OnItemLongClickListener
  public void onClick(DialogInterface p1, int p2)
  {
   mea.dataChanged = true;
-  mea.currentCircle.setColor(mea.view_color.getColor());
+  mea.currentCircle.setColor(mea.tst_color.getColor());
   
   mea.currentCircle.mRectF.left = mea.edt_left.length() > 0 ?
    Integer.parseInt(mea.edt_left.getText().toString()) : 0;
@@ -99,7 +99,7 @@ DialogInterface.OnClickListener, OnClickListener, OnItemLongClickListener
      @Override
      public void onColorChanged(int color)
      {
-      mea.view_color.setInitColor(color);
+      mea.tst_color.setInitColor(color);
      }
 
      @Override
@@ -109,7 +109,7 @@ DialogInterface.OnClickListener, OnClickListener, OnItemLongClickListener
      }
     })
     .create();
-  dialog_color_picker.show(mea.view_color.getColor());
+  dialog_color_picker.show(mea.tst_color.getColor());
  }
  
 }

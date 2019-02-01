@@ -40,7 +40,7 @@
 			<LinearLayout
 				android:layout_height="wrap_content"
 				android:layout_width="match_parent"
-				android:id="@+id/linearlayout_test"
+				android:id="@+id/linearlayout_edit"
 				android:orientation="vertical">
 
 				<TextView
@@ -74,7 +74,8 @@
 					android:layout_height="32dp"
 					android:layout_width="match_parent"
 					android:id="@+id/switch_oval"
-					android:text="矩形"
+					android:text="椭圆"
+                    android:checked="true"
 					android:gravity="center"/>
 
 				<LinearLayout
@@ -96,7 +97,7 @@
 						android:layout_width="50dp"
 						android:focusable="true"
 						android:clickable="true"
-						android:id="@+id/test_color"/>
+						android:id="@+id/tst_color"/>
 
 				</LinearLayout>
 
