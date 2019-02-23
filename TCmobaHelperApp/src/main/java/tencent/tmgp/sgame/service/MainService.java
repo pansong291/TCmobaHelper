@@ -88,7 +88,6 @@ public class MainService extends Zservice
    try{
     mWindowManager.addView(mFloatLayout2, wmParams2);
     mFloatLayout2.measure(MeasureSpec.makeMeasureSpec(0,MeasureSpec.UNSPECIFIED),MeasureSpec.makeMeasureSpec(0,MeasureSpec.UNSPECIFIED));
-    spinner_hero.setSelection(selectedIndex);
    }catch(Exception e)
    {
     e.printStackTrace();
@@ -100,6 +99,7 @@ public class MainService extends Zservice
    dashcircleview.setBaseModel(currentModel);
    dashcircleview.invalidate();
   }
+  spinner_hero.setSelection(selectedIndex);
   updateCircleAdapter();
 
   return super.onStartCommand(intent, flags, startId);
