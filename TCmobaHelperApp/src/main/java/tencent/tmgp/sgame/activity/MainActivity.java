@@ -3,8 +3,10 @@ package tencent.tmgp.sgame.activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -12,17 +14,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import com.tencent.tmgp.sgame.R;
 import java.util.List;
-import tencent.tmgp.sgame.activity.Zactivity;
 import tencent.tmgp.sgame.adapter.SpinnerArrayAdapter;
 import tencent.tmgp.sgame.other.BaseModel;
-import tencent.tmgp.sgame.other.DashCircle;
+import tencent.tmgp.sgame.other.FileUtils;
 import tencent.tmgp.sgame.other.JsonUtils;
 import tencent.tmgp.sgame.other.ViewUtils;
 import tencent.tmgp.sgame.service.MainService;
-import tencent.tmgp.sgame.other.FileUtils;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.net.Uri;
 
 public class MainActivity extends Zactivity 
 {

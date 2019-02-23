@@ -85,7 +85,7 @@ public class DashCircle
  // 设置宽度、粗细
  public void setStrokeWidth(float stroke)
  {
-  strokeWidth = stroke;
+  strokeWidth = stroke < 0 ? 0 : stroke;
   mPaint.setStrokeWidth(strokeWidth);
  }
  

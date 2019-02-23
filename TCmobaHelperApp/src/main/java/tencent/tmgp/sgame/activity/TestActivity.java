@@ -18,7 +18,6 @@ import android.widget.TextView;
 import com.a4455jkjh.colorpicker.view.TestView;
 import com.tencent.tmgp.sgame.R;
 import pansong291.DashCircleView;
-import tencent.tmgp.sgame.activity.Zactivity;
 import tencent.tmgp.sgame.listener.TestViewListener;
 import tencent.tmgp.sgame.other.DashCircle;
 import tencent.tmgp.sgame.other.JsonUtils;
