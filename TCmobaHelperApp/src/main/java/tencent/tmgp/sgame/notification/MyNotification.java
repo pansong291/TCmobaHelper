@@ -36,7 +36,7 @@ public class MyNotification
     if(mNotification == null)
     {
      Intent it = new Intent(sv, MainService.class);
-     it.putExtra(MainService.TAG, true);
+     it.putExtra(MainService.START_FROM_NOTIFICATION, true);
      PendingIntent pi = PendingIntent.getService(sv,0,it,PendingIntent.FLAG_UPDATE_CURRENT);
      Notification.Builder builder = null;
      if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)

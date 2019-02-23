@@ -17,14 +17,14 @@
 		android:textColor="#FF000000"
 		android:id="@+id/btn_close"/>
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="保存"
-        android:background="@drawable/button"
-        android:textColor="#FF000000"
-        android:id="@+id/btn_save"/>
+	<Button
+		style="?android:attr/buttonStyleSmall"
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:text="保存"
+		android:background="@drawable/button"
+		android:textColor="#FF000000"
+		android:id="@+id/btn_save"/>
 
 	<ScrollView
 		android:layout_height="wrap_content"
@@ -35,14 +35,14 @@
 			android:layout_width="match_parent"
 			android:orientation="vertical">
 
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:text="重置"
-                android:background="@drawable/button"
-                android:textColor="#FF000000"
-                android:id="@+id/btn_reset"/>
+			<Button
+				style="?android:attr/buttonStyleSmall"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:text="重置"
+				android:background="@drawable/button"
+				android:textColor="#FF000000"
+				android:id="@+id/btn_reset"/>
 
 			<Switch
 				android:layout_height="32dp"
@@ -65,8 +65,14 @@
 			<Spinner
 				android:layout_height="32dp"
 				android:layout_width="match_parent"
+				android:id="@+id/spinner_hero"
+				android:background="#9B2B2B2B"/>
+
+			<Spinner
+				android:layout_height="32dp"
+				android:layout_width="match_parent"
 				android:id="@+id/spinner_circle"
-				android:background="#90A8A8A8"/>
+				android:background="#9B2B2B2B"/>
 
 			<LinearLayout
 				android:layout_height="wrap_content"
@@ -97,7 +103,7 @@
 				android:layout_height="32dp"
 				android:layout_width="match_parent"
 				android:id="@+id/spinner_tblr"
-				android:background="#90A8A8A8"/>
+				android:background="#9B2B2B2B"/>
 
 			<TextView
 				android:layout_height="wrap_content"

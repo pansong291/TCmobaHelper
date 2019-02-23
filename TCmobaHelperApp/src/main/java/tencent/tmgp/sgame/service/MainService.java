@@ -21,6 +21,7 @@ import com.tencent.tmgp.sgame.R;
 import pansong291.DashCircleView;
 import tencent.tmgp.sgame.activity.MainActivity;
 import tencent.tmgp.sgame.activity.Zactivity;
+import tencent.tmgp.sgame.adapter.SpinnerArrayAdapter;
 import tencent.tmgp.sgame.listener.MainServiceListener;
 import tencent.tmgp.sgame.notification.MyNotification;
 import tencent.tmgp.sgame.other.BaseModel;
@@ -38,18 +39,21 @@ public class MainService extends Zservice
  public Button btn_close,btn_reset, btn_save, btn_sub1,
  btn_sub10,btn_sub100, btn_add1, btn_add10, btn_add100;
  public Switch switch_bgc, switch_oval;
- public Spinner spinner_circle, spinner_tblr;
+ public Spinner spinner_hero, spinner_circle, spinner_tblr;
  public View linearlayout_color;
  public TextView txt_value, txt_0;
  public TestView tst_color;
  
  MainServiceListener listener;
  
+ public int selectedIndex;
  public BaseModel currentModel;
  
- ArrayAdapter<String> adapter1;
+ SpinnerArrayAdapter adapter_hero;
+ public ArrayAdapter<String> adapter_circle;
+ ArrayAdapter<String> adapter_tblr;
  
- public static final String TAG = "MainService";
+ public static final String START_FROM_NOTIFICATION = "ssffnn";
 
  @Override
  public void onCreate() 
@@ -67,7 +71,7 @@ public class MainService extends Zservice
  {
   MyNotification.startNotification(this);
    
-  if(intent.getBooleanExtra(TAG, false))
+  if(intent.getBooleanExtra(START_FROM_NOTIFICATION, false))
   {
    if(wmParams2 == null)
    {
@@ -84,17 +88,19 @@ public class MainService extends Zservice
    try{
     mWindowManager.addView(mFloatLayout2, wmParams2);
     mFloatLayout2.measure(MeasureSpec.makeMeasureSpec(0,MeasureSpec.UNSPECIFIED),MeasureSpec.makeMeasureSpec(0,MeasureSpec.UNSPECIFIED));
+    spinner_hero.setSelection(selectedIndex);
    }catch(Exception e)
    {
     e.printStackTrace();
    }
   }else if(dashcircleview != null)
   {
+   selectedIndex = MainActivity.selectedIndex;
    currentModel = new BaseModel(MainActivity.selectedModel);
    dashcircleview.setBaseModel(currentModel);
    dashcircleview.invalidate();
   }
-  updateAdapter();
+  updateCircleAdapter();
 
   return super.onStartCommand(intent, flags, startId);
  }
@@ -148,6 +154,7 @@ public class MainService extends Zservice
   btn_add100 = mFloatLayout2.findViewById(R.id.btn_add100);
   switch_bgc = mFloatLayout2.findViewById(R.id.switch_bgc);
   switch_oval = mFloatLayout2.findViewById(R.id.switch_oval);
+  spinner_hero = mFloatLayout2.findViewById(R.id.spinner_hero);
   spinner_circle = mFloatLayout2.findViewById(R.id.spinner_circle);
   spinner_tblr = mFloatLayout2.findViewById(R.id.spinner_tblr);
   linearlayout_color = mFloatLayout2.findViewById(R.id.linearlayout_color);
@@ -172,6 +179,7 @@ public class MainService extends Zservice
   btn_add100.setOnClickListener(listener);
   switch_bgc.setOnCheckedChangeListener(listener);
   switch_oval.setOnCheckedChangeListener(listener);
+  spinner_hero.setOnItemSelectedListener(listener);
   spinner_circle.setOnItemSelectedListener(listener);
   spinner_tblr.setOnItemSelectedListener(listener);
   linearlayout_color.setOnClickListener(listener);
@@ -182,30 +190,33 @@ public class MainService extends Zservice
  
  private void initValue()
  {
-  adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
-  adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-  spinner_circle.setAdapter(adapter1);
+  adapter_hero = new SpinnerArrayAdapter(this, MainActivity.models);
+  spinner_hero.setAdapter(adapter_hero);
   
-  ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(
+  adapter_circle = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
+  adapter_circle.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+  spinner_circle.setAdapter(adapter_circle);
+  
+  adapter_tblr = new ArrayAdapter<String>(
    this,android.R.layout.simple_spinner_item, new String[]{"顶距","底距","左距","右距","实长","隙长","厚度"});
-  adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-  spinner_tblr.setAdapter(adapter2);
+  adapter_tblr.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+  spinner_tblr.setAdapter(adapter_tblr);
   
   switch_bgc.setChecked(opBoolean(Zactivity.TEST_BGC, false));
  }
  
- private void updateAdapter()
+ public void updateCircleAdapter()
  {
-  for(int i = adapter1.getCount();i < currentModel.circles.size(); i++)
+  for(int i = adapter_circle.getCount();i < currentModel.circles.size(); i++)
   {
-   adapter1.add("曲线" + (i + 1));
+   adapter_circle.add("曲线" + (i + 1));
   }
-  while(adapter1.getCount() > currentModel.circles.size())
+  while(adapter_circle.getCount() > currentModel.circles.size())
   {
-   adapter1.remove(adapter1.getItem(adapter1.getCount() - 1));
+   adapter_circle.remove(adapter_circle.getItem(adapter_circle.getCount() - 1));
   }
-  adapter1.notifyDataSetChanged();
-  if(spinner_circle.getSelectedItemPosition() >= 0 && spinner_circle.getSelectedItemPosition() < adapter1.getCount())
+  adapter_circle.notifyDataSetChanged();
+  if(spinner_circle.getSelectedItemPosition() >= 0 && spinner_circle.getSelectedItemPosition() < adapter_circle.getCount())
    listener.onItemSelected(spinner_circle, null, spinner_circle.getSelectedItemPosition(), 0);
  }
  

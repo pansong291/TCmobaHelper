@@ -155,6 +155,15 @@ OnItemSelectedListener, OnCheckedChangeListener, OnTouchListener
  {
   switch(p1.getId())
   {
+   case R.id.spinner_hero:
+    ms.selectedIndex = p3;
+    ms.currentModel = new BaseModel(MainActivity.models.get(p3));
+    ms.dashcircleview.setBaseModel(ms.currentModel);
+    ms.dashcircleview.invalidate();
+    ms.updateCircleAdapter();
+    return;
+    //break;
+    
    case R.id.spinner_circle:
     dc = ms.currentModel.circles.get(p3);
     ms.tst_color.setInitColor(dc.color);
@@ -260,13 +269,13 @@ OnItemSelectedListener, OnCheckedChangeListener, OnTouchListener
        ms.removeEditView();
        break;
       case R.id.btn_save:
-       MainActivity.models.set(MainActivity.selectedIndex, ms.currentModel);
+       MainActivity.models.set(ms.selectedIndex, ms.currentModel);
        if(ms.sp.edit().putString(Zactivity.MAIN_MODELS,
                                JsonUtils.toJsonArray(MainActivity.models)).commit())
         ms.toast("已保存");
        break;
       case R.id.btn_reset:
-       ms.currentModel = new BaseModel(MainActivity.models.get(MainActivity.selectedIndex));
+       ms.currentModel = new BaseModel(MainActivity.models.get(ms.selectedIndex));
        onItemSelected(ms.spinner_circle, null, ms.spinner_circle.getSelectedItemPosition(), 0);
        ms.dashcircleview.setBaseModel(ms.currentModel);
        ms.dashcircleview.invalidate();
