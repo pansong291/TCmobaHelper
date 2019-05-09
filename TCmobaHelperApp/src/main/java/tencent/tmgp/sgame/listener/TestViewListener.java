@@ -46,7 +46,7 @@ OnCheckedChangeListener, OnItemSelectedListener, OnEditorActionListener
     break;
    case R.id.txt_selpic:
     Intent it = new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-    it.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+    //it.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
     test.startActivityForResult(Intent.createChooser(it, "选择图片"), test.TEST_REQUEST_CODE);
     break;
    case R.id.tst_color:
