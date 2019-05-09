@@ -5,8 +5,10 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -26,14 +28,44 @@ import tencent.tmgp.sgame.other.ViewUtils;
 public class TestActivity extends Zactivity
 {
  public static final int TEST_REQUEST_CODE = 674;
-  
+ 
+ private void hideNavigation()
+ {
+  if(Build.VERSION.SDK_INT >= 19)
+  {
+   int uiOptions =
+    View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+    |View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+    |View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+    |View.SYSTEM_UI_FLAG_FULLSCREEN
+    |View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+    |View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+   getWindow().getDecorView().setSystemUiVisibility(uiOptions);//5894);
+  }
+ }
+
+ @Override
+ public void onWindowFocusChanged(boolean hasFocus)
+ {
+  super.onWindowFocusChanged(hasFocus);
+  if(hasFocus) hideNavigation();
+ }
+
  @Override
  protected void onCreate(Bundle savedInstanceState)
  {
   // TODO: Implement this method
   super.onCreate(savedInstanceState);
-  getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN); //隐藏状态栏 
-  //getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN); //显示状态栏
+  getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+   WindowManager.LayoutParams.FLAG_FULLSCREEN); //全屏
+  hideNavigation();
+  if(Build.VERSION.SDK_INT >= 28)
+  {
+   WindowManager.LayoutParams lp = getWindow().getAttributes();
+   lp.layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
+   getWindow().setAttributes(lp);
+  }
+  
   setContentView(R.layout.activity_test);
   initView();
   initEvent();
