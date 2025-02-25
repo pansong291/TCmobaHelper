@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <application
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.PackageRenamer"
+        tools:targetApi="34">
+        <activity
+            android:name="tencent.tmgp.sgame.activity.MainActivity"
+            android:resizeableActivity="true"
+            android:exported="true"
+            android:theme="@style/Theme.PackageRenamer">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="tencent.tmgp.sgame.activity.ModelEditActivity"
+            android:resizeableActivity="true"/>
+        <activity
+            android:name="tencent.tmgp.sgame.activity.TestActivity"
+            android:theme="@style/Theme.PackageRenamer.NoActionBarTheme"
+            android:resizeableActivity="true"
+            android:screenOrientation="landscape">
+
+            <!-- 华为手机安卓8.1及以下使用刘海区显示，不做偏移处理 -->
+            <meta-data
+                android:name="android.notch_support"
+                android:value="true"/>
+
+        </activity>
+        <service
+            android:name="tencent.tmgp.sgame.service.MainService"/>
+    </application>
+
+</manifest>
